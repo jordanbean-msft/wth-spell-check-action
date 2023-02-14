@@ -16,3 +16,6 @@ branding:
 runs:
   using: docker
   image: 'Dockerfile'
+  args:
+    - ${{ inputs.spell_check_yaml_path }}
+    - ${{ inputs.markdown_base_path }}
