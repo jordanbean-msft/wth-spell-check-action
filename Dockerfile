@@ -1,4 +1,4 @@
-FROM python:3.7-slim-buster
+FROM python:3.9-slim-buster
 
 LABEL "com.github.actions.name"="WTH Spell Check Action"
 LABEL "com.github.actions.description"="Check spelling of Markdown files in the WhatTheHack repo"
@@ -8,8 +8,11 @@ LABEL "repository"="http://github.com/jordanbean-msft/wth-spell-check-action"
 LABEL "homepage"="http://github.com/actions"
 LABEL "maintainer"="Jordan Bean <jordanbean@microsoft.com>"
 
+RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys CC86BB64
+RUN add-apt-repository ppa:rmescandon/yq
+
 RUN apt-get update \
-  && apt-get install -y aspell hunspell
+  && apt-get install -y aspell hunspell yq
 
 RUN pip3 install pyspelling pyyaml
 

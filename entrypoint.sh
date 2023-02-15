@@ -16,6 +16,8 @@ echo "Starting..."
 echo "Setup languages and spelling tool..."
 apt-get install -y $(python /generate-spellcheck.py $1 $2)
 
+yq -P "$1".json > $1
+
 rm -rf /var/lib/apt/lists/*
 
 echo "Using PySpelling according to configuration from $1"
