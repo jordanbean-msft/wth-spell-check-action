@@ -1,4 +1,4 @@
-FROM python:3.8-slim-buster
+FROM python:3.7-slim-buster
 
 LABEL "com.github.actions.name"="WTH Spell Check Action"
 LABEL "com.github.actions.description"="Check spelling of Markdown files in the WhatTheHack repo"

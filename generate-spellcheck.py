@@ -1,6 +1,5 @@
 import sys
 import yaml
-import io
 import os
 
 CUSTOM_WORD_LIST_FILENAME = '.wordlist.txt'
@@ -13,11 +12,17 @@ def find_wordlist_files(path):
                 wordlist_paths.append(os.path.join(root, file))
     return wordlist_paths
     
-spell_check_yaml_path = sys.argv[1]
-markdown_base_path = sys.argv[2]
+if __name__ == '__main__':
+    spell_check_yaml_path = sys.argv[1]
+    markdown_base_path = sys.argv[2]
 
-with open(spell_check_yaml_path, 'r+') as file:
-    spell_check_yaml = yaml.load(file, Loader=yaml.SafeLoader)
+    spell_check_yaml = None
+
+    with open(spell_check_yaml_path, 'r') as read_file:
+        spell_check_yaml = yaml.load(read_file, Loader=yaml.SafeLoader)
+
     wordlist_paths = find_wordlist_files(markdown_base_path)
     spell_check_yaml['matrix'][0]['dictionary']['wordlists'].extend(wordlist_paths)
-    yaml.dump(file, spell_check_yaml)
+
+    with open(spell_check_yaml_path + ".tmp", 'w') as write_file:
+        yaml.dump(write_file, spell_check_yaml, Dumper=yaml.SafeDumper)
