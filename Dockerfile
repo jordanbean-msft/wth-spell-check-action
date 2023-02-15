@@ -8,7 +8,7 @@ LABEL "repository"="http://github.com/jordanbean-msft/wth-spell-check-action"
 LABEL "homepage"="http://github.com/actions"
 LABEL "maintainer"="Jordan Bean <jordanbean@microsoft.com>"
 
-RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys CC86BB64
+RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys CC86BB64 --no-tty
 RUN add-apt-repository ppa:rmescandon/yq
 
 RUN apt-get update \
