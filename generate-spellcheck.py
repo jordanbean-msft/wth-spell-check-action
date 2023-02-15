@@ -19,10 +19,10 @@ if __name__ == '__main__':
     spell_check_yaml = None
 
     with open(spell_check_yaml_path, 'r') as read_file:
-        spell_check_yaml = yaml.load(read_file, Loader=yaml.SafeLoader)
+        spell_check_yaml = yaml.load(read_file, Loader=yaml.Loader)
 
     wordlist_paths = find_wordlist_files(markdown_base_path)
     spell_check_yaml['matrix'][0]['dictionary']['wordlists'].extend(wordlist_paths)
 
     with open(spell_check_yaml_path + ".tmp", 'w') as write_file:
-        yaml.dump(write_file, spell_check_yaml, Dumper=yaml.SafeDumper)
+        yaml.dump(write_file, spell_check_yaml, Dumper=yaml.Dumper)
