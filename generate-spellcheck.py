@@ -16,7 +16,7 @@ def find_wordlist_files(path):
 spell_check_yaml_path = sys.argv[1]
 markdown_base_path = sys.argv[2]
 
-with open(spell_check_yaml_path, 'w') as file:
+with open(spell_check_yaml_path, 'r+') as file:
     spell_check_yaml = yaml.load(file, Loader=yaml.SafeLoader)
     wordlist_paths = find_wordlist_files(markdown_base_path)
     spell_check_yaml.matrix['Markdown'].dictionary.wordlists.append(wordlist_paths)
