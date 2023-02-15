@@ -27,7 +27,7 @@ if __name__ == '__main__':
     print("Adding wordlists: ")
     print("\n".join(wordlist_paths))
 
-    list(spell_check_yaml['matrix'][0]['dictionary']['wordlists']).extend(wordlist_paths)
+    spell_check_yaml['matrix'][0]['dictionary']['wordlists'].extend(wordlist_paths)
 
     with open(spell_check_yaml_path + ".json", 'w') as write_file:
         #yaml.dump doesn't work in Python >3, so we dump to JSON instead & convert using yq in the outer script
