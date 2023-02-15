@@ -8,11 +8,11 @@ LABEL "repository"="http://github.com/jordanbean-msft/wth-spell-check-action"
 LABEL "homepage"="http://github.com/actions"
 LABEL "maintainer"="Jordan Bean <jordanbean@microsoft.com>"
 
-RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys CC86BB64 --no-tty
-RUN add-apt-repository ppa:rmescandon/yq
-
 RUN apt-get update \
-  && apt-get install -y aspell hunspell yq
+  && apt-get install -y aspell hunspell
+
+RUN wget https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64 -O /usr/bin/yq && \
+  chmod +x /usr/bin/yq
 
 RUN pip3 install pyspelling pyyaml
 
