@@ -11,7 +11,7 @@ LABEL "maintainer"="Jordan Bean <jordanbean@microsoft.com>"
 RUN apt-get update \
   && apt-get install -y aspell hunspell wget
 
-RUN wget https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64 -O /usr/bin/yq && \
+RUN wget https://github.com/mikefarah/yq/releases/v4.30.7/download/yq_linux_amd64 -O /usr/bin/yq && \
   chmod +x /usr/bin/yq
 
 RUN pip3 install pyspelling pyyaml
