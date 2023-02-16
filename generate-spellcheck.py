@@ -10,7 +10,7 @@ def find_wordlist_files(path):
     for root, dirs, files in os.walk(path):
         for file in files:
             if file.endswith(CUSTOM_WORD_LIST_FILENAME):
-                wordlist_paths.append('"' + os.path.join(root, file) + '"')
+                wordlist_paths.append(os.path.join(root, file))
     return wordlist_paths
     
 if __name__ == '__main__':
