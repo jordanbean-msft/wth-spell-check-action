@@ -16,7 +16,8 @@ def find_wordlist_files(path):
 if __name__ == '__main__':
     spell_check_yaml_path = sys.argv[1]
     markdown_base_path = sys.argv[2]
-    changed_files = sys.argv[3:]
+    changed_files_tmp = sys.argv[3:]
+    changed_files = changed_files_tmp[0].split(' ')
 
     spell_check_yaml = None
 
