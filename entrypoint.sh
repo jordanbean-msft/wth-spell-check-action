@@ -1,12 +1,17 @@
-#!/bin/sh -l
+#!/bin/bash -l
 
 echo "Starting..."
 echo "Setup languages and spelling tool..."
 #$1 is the config file, $2 is the path to the markdown files, $3 is the space separated list of files that have changed and need to be checked
-configFile="$1"
-pathToMarkdownFiles="$2"
+configFile="$1"; shift
+pathToMarkdownFiles="$1"; shift
 changedFiles=("$@")
-python /generate-spellcheck.py "$configFile" "$pathToMarkdownFiles" "${changedFiles[@]}"
+
+# echo "Config file: $configFile"
+# echo "Path to markdown files: $pathToMarkdownFiles"
+# echo "Changed files: ${changedFiles[@]}"
+
+python ./generate-spellcheck.py "$configFile" "$pathToMarkdownFiles" "${changedFiles[@]}"
 
 # convert from JSON to YAML
 yq -P "$1".tmp > "$1"
