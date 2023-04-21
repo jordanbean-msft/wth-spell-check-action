@@ -14,13 +14,13 @@ echo "Changed files: ${changedFiles[@]}"
 python /generate-spellcheck.py "$configFile" "$pathToMarkdownFiles" "${changedFiles[@]}"
 
 # convert from JSON to YAML
-yq -P "$1".tmp > "$1"
+yq -P "$configFile".tmp > "$configFile"
 
 rm -rf /var/lib/apt/lists/*
 
-echo "Using PySpelling according to configuration from $1"
+echo "Using PySpelling according to configuration from $configFile"
 
-pyspelling --config "$1"
+pyspelling --config "$configFile"
 
 EXITCODE=$?
 
