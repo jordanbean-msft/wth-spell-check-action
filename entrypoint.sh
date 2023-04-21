@@ -13,6 +13,8 @@ echo "Changed files: ${changedFiles[@]}"
 
 python /generate-spellcheck.py "$configFile" "$pathToMarkdownFiles" "${changedFiles[@]}"
 
+cat "$configFile".tmp
+
 # convert from JSON to YAML
 yq -P "$configFile".tmp > "$configFile"
 
