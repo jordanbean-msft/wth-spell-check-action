@@ -17,6 +17,8 @@ if __name__ == '__main__':
     spell_check_yaml_path = sys.argv[1]
     markdown_base_path = sys.argv[2]
     changed_files_tmp = sys.argv[3:]
+    # the changed files come in as a list with a single element, each of which is space-separated in the first element
+    # therefore, we need to split them
     changed_files = changed_files_tmp[0].split(' ')
 
     spell_check_yaml = None
@@ -28,9 +30,6 @@ if __name__ == '__main__':
 
     # Add any custom wordlists defined to the spellcheck config
     spell_check_yaml['matrix'][0]['dictionary']['wordlists'].extend(wordlist_paths)
-
-    print("Changed files Python:")
-    print(changed_files)
 
     # Set the list of files to check
     spell_check_yaml['matrix'][0]['sources'] = changed_files
