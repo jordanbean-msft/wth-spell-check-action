@@ -16,6 +16,7 @@ def find_wordlist_files(path):
 if __name__ == '__main__':
     spell_check_yaml_path = sys.argv[1]
     markdown_base_path = sys.argv[2]
+    changed_files = sys.argv[3:]
 
     spell_check_yaml = None
 
@@ -24,10 +25,13 @@ if __name__ == '__main__':
 
     wordlist_paths = find_wordlist_files(markdown_base_path)
 
-    print("Adding wordlists: ")
-    print("\n".join(wordlist_paths))
-
+    # Add any custom wordlists defined to the spellcheck config
     spell_check_yaml['matrix'][0]['dictionary']['wordlists'].extend(wordlist_paths)
+
+    print(changed_files)
+
+    # Set the list of files to check
+    spell_check_yaml['matrix'][0]['sources'] = changed_files
 
     with open(spell_check_yaml_path + ".tmp", 'w') as write_file:
         #yaml.dump doesn't work in Python >3, so we dump to JSON instead & convert using yq in the outer script

@@ -1,21 +1,14 @@
 #!/bin/sh -l
 
-echo ""
-echo ">>> Tools & Versions"
-echo "> python $(python --version)"
-echo ""
-echo "> pip3 $(pip --version)"
-echo ""
-echo "> pyspelling $(pip3 show pyspelling)"
-echo ""
-echo "> pyyaml $(pip3 show pyyaml)"
-echo "<<<"
-echo ""
-
 echo "Starting..."
 echo "Setup languages and spelling tool..."
-python /generate-spellcheck.py "$1" "$2"
+#$1 is the config file, $2 is the path to the markdown files, $3 is the space separated list of files that have changed and need to be checked
+configFile="$1"
+pathToMarkdownFiles="$2"
+changedFiles=("$@")
+python /generate-spellcheck.py "$configFile" "$pathToMarkdownFiles" "${changedFiles[@]}"
 
+# convert from JSON to YAML
 yq -P "$1".tmp > "$1"
 
 rm -rf /var/lib/apt/lists/*
