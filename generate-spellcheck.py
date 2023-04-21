@@ -32,7 +32,7 @@ if __name__ == '__main__':
     print(changed_files)
 
     # Set the list of files to check
-    spell_check_yaml['matrix'][0]['sources'].extend(changed_files)
+    spell_check_yaml['matrix'][0]['sources'] = changed_files
 
     with open(spell_check_yaml_path + ".tmp", 'w') as write_file:
         #yaml.dump doesn't work in Python >3, so we dump to JSON instead & convert using yq in the outer script
