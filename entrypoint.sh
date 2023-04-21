@@ -7,9 +7,9 @@ configFile="$1"; shift
 pathToMarkdownFiles="$1"; shift
 changedFiles=("$@")
 
-# echo "Config file: $configFile"
-# echo "Path to markdown files: $pathToMarkdownFiles"
-# echo "Changed files: ${changedFiles[@]}"
+echo "Config file: $configFile"
+echo "Path to markdown files: $pathToMarkdownFiles"
+echo "Changed files: ${changedFiles[@]}"
 
 python /generate-spellcheck.py "$configFile" "$pathToMarkdownFiles" "${changedFiles[@]}"
 

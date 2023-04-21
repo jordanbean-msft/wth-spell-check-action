@@ -28,7 +28,7 @@ if __name__ == '__main__':
     # Add any custom wordlists defined to the spellcheck config
     spell_check_yaml['matrix'][0]['dictionary']['wordlists'].extend(wordlist_paths)
 
-    print(changed_files)
+    print("python: " + changed_files)
 
     # Set the list of files to check
     spell_check_yaml['matrix'][0]['sources'] = changed_files
