@@ -11,7 +11,7 @@ changedFiles=("$@")
 # echo "Path to markdown files: $pathToMarkdownFiles"
 # echo "Changed files: ${changedFiles[@]}"
 
-python ./generate-spellcheck.py "$configFile" "$pathToMarkdownFiles" "${changedFiles[@]}"
+python /generate-spellcheck.py "$configFile" "$pathToMarkdownFiles" "${changedFiles[@]}"
 
 # convert from JSON to YAML
 yq -P "$1".tmp > "$1"
