@@ -16,6 +16,8 @@ python /generate-spellcheck.py "$configFile" "$pathToMarkdownFiles" "${changedFi
 # convert from JSON to YAML
 yq -P "$configFile".tmp > "$configFile"
 
+cat "$configFile"
+
 rm -rf /var/lib/apt/lists/*
 
 echo "Using PySpelling according to configuration from $configFile"
